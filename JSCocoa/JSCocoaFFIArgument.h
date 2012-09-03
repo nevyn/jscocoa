@@ -13,6 +13,7 @@
 #include <ffi/ffi.h>
 #endif
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
+#include "JavascriptCore.h"
 #import "iPhone/libffi/ffi.h"
 #endif
 

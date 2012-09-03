@@ -4560,13 +4560,11 @@ static JSValueRef jsCocoaObject_callAsFunction_ffi(JSContextRef ctx, JSObjectRef
 				callAddress = objc_msgSendSuper;
 				if (usingStret)	callAddress = objc_msgSendSuper_stret;
 				_super.receiver = callee;
-#if __LP64__
+#if !defined(__cplusplus)  &&  !__OBJC2__
+                _super.class = superSelectorClass;
+#else 
 				_super.super_class	= superSelectorClass;
-//#elif TARGET_IPHONE_SIMULATOR || !TARGET_OS_IPHONE
-//				_super.class	= superSelectorClass;
-#else			
-				_super.class	= superSelectorClass;
-#endif			
+#endif
 				superPointer	= &_super;
 				values[0]		= &superPointer;
 //				NSLog(@"superClass=%@ (old=%@) (%@) function=%p", superSelectorClass, [callee superclass], [callee class], function);

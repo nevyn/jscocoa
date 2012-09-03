@@ -453,7 +453,7 @@ void JSValueUnprotect(JSContextRef ctx, JSValueRef value)
 @implementation JSCocoaSymbolFetcher
 + (void)populateJavascriptCoreSymbols
 {
-#define SYM_ORDER RTLD_DEFAULT
+#define SYM_ORDER RTLD_NEXT
 
 	_JSEvaluateScript = dlsym(SYM_ORDER, "JSEvaluateScript");
 	if (_JSEvaluateScript == JSEvaluateScript) {
